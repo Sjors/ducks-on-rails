@@ -1,5 +1,5 @@
 # This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of ActiveRecord to incrementally modify your database, and
+# please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
 # Note that this schema.rb definition is the authoritative source for your database schema. If you need
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(:version => 84) do
   end
 
   create_table "breeding_successes", :id => false, :force => true do |t|
-    t.string  "region",            :limit => 20,                                 :default => "", :null => false
+    t.string  "region",            :limit => 20,                                                 :null => false
     t.string  "species_id",        :limit => 100,                                :default => "", :null => false
-    t.string  "sex",               :limit => 6,                                  :default => "", :null => false
+    t.string  "sex",               :limit => 6,                                                  :null => false
     t.integer "year",                                                                            :null => false
     t.integer "firstyear"
     t.integer "firstyearandolder"
@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(:version => 84) do
   add_index "capture_countries", ["country_id"], :name => "country_id"
 
   create_table "capture_country_subdivisions", :id => false, :force => true do |t|
-    t.string  "sch",                      :limit => 3, :default => "", :null => false
-    t.string  "ringnr",                   :limit => 8, :default => "", :null => false
-    t.integer "occ",                                                   :null => false
+    t.string  "sch",                      :limit => 3, :null => false
+    t.string  "ringnr",                   :limit => 8, :null => false
+    t.integer "occ",                                   :null => false
     t.string  "country_subdivision_id",   :limit => 6
     t.boolean "derived_from_coordinates"
   end
@@ -71,15 +71,15 @@ ActiveRecord::Schema.define(:version => 84) do
   add_index "capture_country_subdivisions", ["country_subdivision_id"], :name => "country_subdivision_id"
 
   create_table "capture_counts", :id => false, :force => true do |t|
-    t.string  "sch",      :limit => 3, :default => "", :null => false
-    t.string  "ringnr",   :limit => 8, :default => "", :null => false
-    t.integer "captures",                              :null => false
+    t.string  "sch",      :limit => 3, :null => false
+    t.string  "ringnr",   :limit => 8, :null => false
+    t.integer "captures",              :null => false
   end
 
   create_table "capture_former_countries", :id => false, :force => true do |t|
-    t.string  "sch",               :limit => 3, :default => "", :null => false
-    t.string  "ringnr",            :limit => 8, :default => "", :null => false
-    t.integer "occ",                                            :null => false
+    t.string  "sch",               :limit => 3, :null => false
+    t.string  "ringnr",            :limit => 8, :null => false
+    t.integer "occ",                            :null => false
     t.string  "former_country_id", :limit => 4
   end
 
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(:version => 84) do
     t.decimal "lat",                :precision => 10, :scale => 7, :default => 0.0, :null => false
     t.decimal "lon",                :precision => 10, :scale => 7, :default => 0.0, :null => false
     t.integer "occ",                                                                :null => false
-    t.string  "name", :limit => 50,                                :default => "",  :null => false
+    t.string  "name", :limit => 50,                                                 :null => false
   end
 
   add_index "coordinate_names", ["name"], :name => "name"
@@ -204,7 +204,7 @@ ActiveRecord::Schema.define(:version => 84) do
   add_index "euring_country_to_iso", ["country_id"], :name => "country_id"
 
   create_table "euring_former_country_to_iso", :id => false, :force => true do |t|
-    t.string "ar",                :limit => 4, :default => "", :null => false
+    t.string "ar",                :limit => 4,                 :null => false
     t.string "former_country_id", :limit => 4, :default => "", :null => false
   end
 
@@ -237,9 +237,9 @@ ActiveRecord::Schema.define(:version => 84) do
   add_index "former_country_coordinates", ["former_country_id"], :name => "former_country_id"
 
   create_table "manipulations", :force => true do |t|
-    t.timestamp "timestamp",                               :null => false
-    t.string    "type",      :limit => 50, :default => "", :null => false
-    t.string    "ref",       :limit => 50, :default => "", :null => false
+    t.timestamp "timestamp",               :null => false
+    t.string    "type",      :limit => 50, :null => false
+    t.string    "ref",       :limit => 50, :null => false
   end
 
   create_table "map_edges", :force => true do |t|
@@ -279,13 +279,13 @@ ActiveRecord::Schema.define(:version => 84) do
   add_index "nl_vts_ring_permits", ["Categories"], :name => "Categories"
 
   create_table "raw_decoys", :force => true do |t|
-    t.string "registratienummer",       :limit => 20,  :default => "", :null => false
-    t.string "naam_eendenkooi",         :limit => 40,  :default => "", :null => false
-    t.string "gemeente",                :limit => 30,  :default => "", :null => false
-    t.string "provincie",               :limit => 20,  :default => "", :null => false
-    t.string "dur_nummer",              :limit => 40,  :default => "", :null => false
-    t.string "kadastrale_omschrijving", :limit => 100, :default => "", :null => false
-    t.string "coordinaten",             :limit => 20,  :default => "", :null => false
+    t.string "registratienummer",       :limit => 20,  :null => false
+    t.string "naam_eendenkooi",         :limit => 40,  :null => false
+    t.string "gemeente",                :limit => 30,  :null => false
+    t.string "provincie",               :limit => 20,  :null => false
+    t.string "dur_nummer",              :limit => 40,  :null => false
+    t.string "kadastrale_omschrijving", :limit => 100, :null => false
+    t.string "coordinaten",             :limit => 20,  :null => false
   end
 
   add_index "raw_decoys", ["coordinaten"], :name => "coordinaten"
@@ -293,9 +293,9 @@ ActiveRecord::Schema.define(:version => 84) do
   create_table "raw_found_ducks", :force => true do |t|
     t.string  "sch",    :limit => 3
     t.string  "ringnr", :limit => 8
-    t.integer "fspec",  :limit => 5
+    t.integer "fspec"
     t.string  "ve",     :limit => 1
-    t.integer "fx",     :limit => 2
+    t.integer "fx"
     t.string  "fa",     :limit => 1
     t.date    "fdate"
     t.string  "fy",     :limit => 2
@@ -303,12 +303,12 @@ ActiveRecord::Schema.define(:version => 84) do
     t.string  "fca",    :limit => 4
     t.string  "fcb",    :limit => 4
     t.string  "fq",     :limit => 1
-    t.integer "c",      :limit => 1
-    t.integer "ci",     :limit => 2
+    t.integer "c"
+    t.integer "ci"
     t.string  "tr",     :limit => 1
     t.string  "pr",     :limit => 1
     t.string  "fs",     :limit => 1
-    t.integer "fb",     :limit => 1
+    t.integer "fb"
     t.string  "dist",   :limit => 4
     t.string  "dir",    :limit => 4
     t.string  "fid",    :limit => 10
@@ -322,13 +322,13 @@ ActiveRecord::Schema.define(:version => 84) do
   add_index "raw_found_ducks", ["fq"], :name => "fq"
 
   create_table "raw_geotab", :id => false, :force => true do |t|
-    t.string "area",    :limit => 4,  :default => "", :null => false
+    t.string "area",    :limit => 4,  :null => false
     t.string "lat",     :limit => 4
     t.string "lon",     :limit => 4
-    t.string "q",       :limit => 1,  :default => "", :null => false
+    t.string "q",       :limit => 1,  :null => false
     t.string "ca",      :limit => 4
     t.string "cb",      :limit => 4
-    t.string "geoname", :limit => 50, :default => "", :null => false
+    t.string "geoname", :limit => 50, :null => false
   end
 
   add_index "raw_geotab", ["area"], :name => "area"
@@ -341,10 +341,10 @@ ActiveRecord::Schema.define(:version => 84) do
   create_table "raw_ringed_ducks", :id => false, :force => true do |t|
     t.string  "sch",    :limit => 3,  :default => "", :null => false
     t.string  "ringnr", :limit => 8,  :default => "", :null => false
-    t.integer "rspec",  :limit => 5
+    t.integer "rspec"
     t.integer "rf"
     t.string  "ch",     :limit => 1
-    t.integer "rx",     :limit => 2
+    t.integer "rx"
     t.string  "ra",     :limit => 1
     t.string  "rs",     :limit => 1
     t.string  "rb",     :limit => 1
@@ -411,18 +411,18 @@ ActiveRecord::Schema.define(:version => 84) do
   end
 
   create_table "temp_geotab", :force => true do |t|
-    t.string  "area",                   :limit => 4,                                 :default => "", :null => false
+    t.string  "area",                   :limit => 4,                                 :null => false
     t.string  "country_id",             :limit => 2
     t.string  "former_country_id",      :limit => 4
     t.string  "country_subdivision_id", :limit => 6
-    t.string  "lat_dm",                 :limit => 4,                                 :default => "", :null => false
-    t.string  "lon_dm",                 :limit => 4,                                 :default => "", :null => false
-    t.string  "q",                      :limit => 1,                                 :default => "", :null => false
-    t.string  "ca",                     :limit => 4,                                 :default => "", :null => false
-    t.string  "cb",                     :limit => 4,                                 :default => "", :null => false
+    t.string  "lat_dm",                 :limit => 4,                                 :null => false
+    t.string  "lon_dm",                 :limit => 4,                                 :null => false
+    t.string  "q",                      :limit => 1,                                 :null => false
+    t.string  "ca",                     :limit => 4,                                 :null => false
+    t.string  "cb",                     :limit => 4,                                 :null => false
     t.decimal "lat",                                  :precision => 10, :scale => 7
     t.decimal "lon",                                  :precision => 10, :scale => 7
-    t.string  "geoname",                :limit => 50,                                :default => "", :null => false
+    t.string  "geoname",                :limit => 50,                                :null => false
   end
 
   add_index "temp_geotab", ["area"], :name => "area"
@@ -435,13 +435,13 @@ ActiveRecord::Schema.define(:version => 84) do
   add_index "temp_geotab", ["lat", "lon"], :name => "lat"
 
   create_table "temp_merge_raw_captures", :id => false, :force => true do |t|
-    t.string  "sch",    :limit => 3, :default => "", :null => false
-    t.string  "ringnr", :limit => 8, :default => "", :null => false
-    t.integer "occ",                                 :null => false
-    t.string  "ca",     :limit => 4, :default => "", :null => false
-    t.string  "cb",     :limit => 4, :default => "", :null => false
-    t.string  "q",      :limit => 1, :default => "", :null => false
-    t.string  "ar",     :limit => 4, :default => "", :null => false
+    t.string  "sch",    :limit => 3, :null => false
+    t.string  "ringnr", :limit => 8, :null => false
+    t.integer "occ",                 :null => false
+    t.string  "ca",     :limit => 4, :null => false
+    t.string  "cb",     :limit => 4, :null => false
+    t.string  "q",      :limit => 1, :null => false
+    t.string  "ar",     :limit => 4, :null => false
     t.string  "a",      :limit => 1
     t.integer "age"
     t.string  "rid",    :limit => 3
