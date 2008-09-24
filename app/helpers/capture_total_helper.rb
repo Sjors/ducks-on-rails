@@ -1,0 +1,2 @@
+module CaptureTotalHelper
+end

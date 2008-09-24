@@ -1,0 +1,9 @@
+<div id="left">
+  <%= render_partial 'species/info', @species%>
+</div>
+<div id="right">
+<img src='<%=@figure_url%>' alt='<%=  @chart_title %> <%= @species.id %>.'>
+<p><%= @chart_description %></p>
+</div>
+
+

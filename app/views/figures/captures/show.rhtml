@@ -1,0 +1,80 @@
+<div id="left">
+
+<script language="javascript"> 
+function DisableSettings()
+  {
+  var count = document.forms[0].elements.length;
+  for (i=0; i<count; i++)  {
+    var element = document.forms[0].elements[i]; 
+    if (element.type == "checkbox") { element.disabled=true; } 
+  }
+}
+
+function EnableSettings()
+  {
+  var count = document.forms[0].elements.length;
+  for (i=0; i<count; i++)  {
+    var element = document.forms[0].elements[i]; 
+    if (element.type == "checkbox") { element.disabled=false; } 
+  }
+}
+</script> 
+
+  <%= render_partial 'species/info', @species %>
+  <div id="settings">
+        <% months = ["jan","feb","mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"] %>
+        <% month_names = ["January","February","March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %>
+        <%= form_remote_tag :update => "map", :url => {:action => :regenerate_map, :species_id => @species.id}, :html => {:id => "dom_id"} %>
+        <div id = "settings_summer">
+        <h2>Summer</h2>
+        <% for month in 4..9 do %>
+          <% 
+            if session[:smonths].index(month) then 
+              checked = 'checked'
+            else 
+              checked = 'unchecked'
+            end 
+          %>
+          <%= check_box "smonth", months[month - 1], :checked => checked, :onclick => 
+            "#{
+              remote_function(
+                :update => 'map', 
+                :url => {:action => :regenerate_map, :species_id => @species.id}, 
+                :submit => 'dom_id'
+              )}; DisableSettings();"
+            %><%=month_names[month - 1]%><br>
+        <% end %>
+        
+        
+        <h2>Winter</h2>
+        <% for month in [1,2,3,10,11,12] do %>
+          <% 
+            if session[:wmonths].index(month) then 
+              checked = 'checked'
+            else 
+              checked = 'unchecked'
+            end 
+          %>
+          <%= check_box "wmonth", months[month - 1], :checked => checked, :onclick => 
+            "#{
+              remote_function(
+                :update => 'map', 
+                :url => {:action => :regenerate_map, :species_id => @species.id}, 
+                :submit => 'dom_id'
+              )}; DisableSettings();"
+            %><%=month_names[month - 1]%><br>
+        <% end %>
+        </div>
+     </form>
+  </div>
+</div>
+<div id="right">
+  <div id="map">
+    
+     <img src='<%=@figure_url%>' onload='EnableSettings()' alt='Map of European captures of <%=@species.id%>.'>
+     
+  </div>
+     <%= render_partial 'figures/download'%>
+     <p>Summer captures in green, winter captures in red.</p>
+     <p>Map powered by <a href="http://gmt.soest.hawaii.edu/">GMT</a></p>
+</div>

@@ -1,0 +1,13 @@
+<div id="left">
+  <%= render_partial 'species/info', @species %>
+</div>
+<div id="right">
+  <div id='map'>
+  <img src="/<%=@figure_url%>" alt="Duck decoys were <%=@species.id%> was ringed.">
+  <%= link_to "Download", :action => :download, :species_id => @species.id, :figure => "map"%>
+  <div id="comment300">
+  <p>Red stars are duck decoys. There size indicates the number of ducks captured there. The black circles are ducks (though to be) caught outside a decoy.</p>
+  <p>Map powered by <a href="http://gmt.soest.hawaii.edu/">GMT</a></p>
+  </div>
+  </div>
+</div>

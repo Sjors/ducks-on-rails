@@ -1,0 +1,12 @@
+<div id='left'>
+    <%= render_partial 'species/info', @species %>
+</div>
+<div id="right">
+<img src='<%=@figure_url%>' world map for <%= @species.id %>.'>
+<ul>
+<% @countries.each do |country| %>
+<li><%= section_link country[1], :controller => '/gchart', :action => 'capture_condition', :species_id => @species.id, :country => country[0] %> (<%= country[2] %> captures)
+
+<% end %>
+</ul> 
+</div>

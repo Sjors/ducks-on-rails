@@ -1,0 +1,37 @@
+<h1>Ducks on Rails</h1>
+<h2>Introduction</h2>
+<p>
+I created this website as a side project of <a href="http://www.sprovoost.nl/">my</a> master thesis at <a href="http://www.nioo.knaw.nl/indexENG.htm">NIOO</a> (Netherlands Institute of Ecology) in coorperation with <a href="http://www.bio.uu.nl/scienceshop/">Kennispunt Bètawetenschappen Utrecht University</a>, <a href="http://www.eendenkooi.net/">Eendenkooi Stichting</a>, The Dutch Group for Ringing in Duck Decoys (Werkgroep Ringwerk Eendenkooien Nederland, WREN) and <a href="http://www.geo.uu.nl/20419main.html">The Copernicus Institute for Sustainable Development and Innovation</a>.</p>
+
+<p>You can download my report <a href="http://sprovoost.nl/Population_dynamics_and_whereabouts_of_ducks_ringed_in_The_Netherlands-Sjors_Provoost_2008.pdf">here</a>.</p>
+
+<p>The website shows some basic information as well as maps of where the ducks have been going since the early 20th century. You can even follow some individuals in detail.</p>
+
+<p>I obtained the data from the Dutch Center for Avian Migration and Demography (<a href="http://www.vogeltrekstation.nl/">Vogeltrekcentrum Arnhem</a>). The most important tools I used are <a href="http://www.rubyonrails.org/">Ruby on Rails</a>, <a href="http://www.soest.hawaii.edu/gmt/">GMT - The Generic Mapping Tools</a>, <a href="http://www.mysql.com/">MySQL</a>and the <a href="http://code.google.com/apis/chart/">Google Chart API</a>. I will release the source code in some open source licence later. The data is owned by the Vogeltrekstation and can be <a href="http://www.vogeltrekstation.nl/aanvraag_gegevens.htm">obtained</a> from them. More information and the source code can be found on <a href="http://code.google.com/p/ducks-on-rails/">Google Code</a>.</p>
+
+<address>
+Sjors Provoost <br />
+<a href="mailto:s.provoost@nioo.knaw.nl">s.provoost@nioo.knaw.nl</a>
+</address>
+
+<h2>Listing species</h2>
+Click on a duck to continue...
+<table>
+<% for species in @species %>
+  <tr>
+    <td>
+      <%= link_to "<img src='/images/species/#{species.id}.jpg' alt='#{species.id}'>",:controller => 'gchart',:action => 'capturesperyear' , :species_id => species.id %>
+    </td>
+    
+    <td>
+        <%=link_to "#{species.id}",:controller => 'gchart', :action => 'capturesperyear' , :species_id => species.id%> (
+        <%=species.name_nl%> /
+        <%=species.name_en%> ) <br>
+        Captured at least <%= species.CaptureTotal%> times in The Netherlands<br>
+    </td>
+    <td></td>    
+  </tr>
+<% end %> 
+</table>
+<br />
+

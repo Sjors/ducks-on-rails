@@ -1,0 +1,42 @@
+<div id='left'>
+    <%= render_partial 'species/info', @species %>
+    <div id='top'>
+        <hr>
+        <%#= link_to('previous page', {:params => params.merge('page' => @item_pages.current.previous)}) if @item_pages.current.previous %>
+        <%#= ' | ' if @item_pages.current.previous and @item_pages.current.next %>
+        <%#= link_to('next page', {:params => params.merge('page' => @item_pages.current.next)}) if @item_pages.current.next %><br>
+        <%# for page in @item_pages -%>
+            <%#= link_to_unless(params[:page].to_i == page.number, page.number, 
+                    {:params => params.merge('page' => page)}, 
+                    {:class => 'linked_page'}) {|link_name| "<span class='unlinked_page'>#{link_name}</span>"} %>&nbsp;
+        <%# end -%><br />
+    </div>
+</div>
+ <div id='right'>
+    <p>The top 20 (or less) ducks that have been captured most often. Click on the numbers to see where they went!
+    </p>
+    <table border=1>
+    <tr>
+        <!--<th>Ringnr</th>-->
+        <th>Sex</th>
+        <th>Captures</th>
+        <th>Capture</th>
+        <th>Last recapture</th>
+    </tr>
+    <% for duck in @ducks %>
+        <tr>
+            <!--<td><%#=duck.ringnr%></td>-->
+            <td><%=duck.sex%></td>
+            <td><%=link_to(duck.capture_count.captures, {:action => :captures, :species_id => @species.id, :sch => duck.sch, :ringnr => duck.ringnr})%></td>
+            <td><%=duck.captures.first.date%></td>
+            <td><%=duck.captures.last.date%></td>
+
+            
+        </tr>
+    <% end %>
+    </table>
+</div>
+
+
+</div>
+

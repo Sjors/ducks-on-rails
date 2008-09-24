@@ -1,0 +1,30 @@
+<div id='info'>
+<%=link_to "Other species", :controller => '/species' %>
+<hr>
+<h2><%= @species.id %></h2>
+<a href="<%=@species.picture_url%>"><img src="/images/species/<%=@species.id%>.jpg" alt="<%=@species.id%>"></a>
+<p>
+<%=@species.name_nl%> <br>
+<%=@species.name_en%> <br>
+At least <%= @species.CaptureTotal%> captures.<br>
+<a href="<%=@species.info_url%>">Info</a>
+</p>
+<hr>
+<%= section_link "Captures per year", :controller => '/gchart', :action => 'capturesperyear',:species_id => @species.id%> in the Netherlands.<br>
+<%= section_link "Sex distribution", :controller => '/gchart', :action => 'sex',:species_id => @species.id%><br>
+<%= section_link "Age distribution", :controller => '/gchart', :action => 'age',:species_id => @species.id%><br>
+
+<% if(PROCESS_DUCK_DECOYS) then %>
+<%= section_link "Map of decoys", :controller => '/figures/decoys', :action => 'index', :species_id => @species.id%><br>
+<%= section_link "Percentage of captures in decoys", :controller => '/gchart', :action => 'catch_method',:species_id => @species.id%><br>
+<%= section_link "Bakkerswaal decoy", :controller => '/gchart', :action => 'top_decoys',:species_id => @species.id%><br>
+<% end %>
+
+<%= section_link "Map of recaptures", :controller => '/figures/captures', :action => 'index' ,:species_id => @species.id%><br> 
+<%= section_link "Chart of recapture countries", :controller => '/gchart', :action => 'countries',:species_id => @species.id%><br>
+<%= section_link "Individual paths", :controller => '/duck', :action => 'index', :species_id => @species.id%><br>
+<%= section_link "Recapture condition", :controller => '/navigation', :action => 'recapture_condition_countries', :species_id => @species.id%><br />
+<%= section_link "Speed", :controller => '/gchart', :action => 'speed',:species_id => @species.id%><br>
+<%= section_link "Survival", :controller => '/gchart', :action => 'survival',:species_id => @species.id%><br>
+</div>
+

@@ -1,0 +1,8 @@
+--- 
+cwd: /var/www/ducks.sprovoost.nl/current
+log_file: log/mongrel.log
+port: "8200"
+environment: production
+address: 127.0.0.1
+pid_file: log/mongrel.pid
+servers: 1

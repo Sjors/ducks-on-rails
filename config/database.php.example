@@ -1,0 +1,25 @@
+<?php
+# Copy this file to database.php (i.e. do not edit database.php.template)
+# Fill in the right MySQL username, database and password.
+# Secure this file with "chmod 600 database.php"
+
+require_once 'MDB2.php';
+
+// the database needs to be created manually beforehand
+$dsn = array(
+    'phptype'  => 'mysqli',
+    'username' => 'duck',
+    'password' => '',
+    'hostspec' => 'localhost',
+    'database' => 'ducks_development'
+);
+
+// create MDB2 instance
+$mdb2 = MDB2::factory($dsn);
+if (PEAR::isError($mdb2)) {
+    die($mdb2->getMessage());
+}
+
+// set the default fetchmode
+$mdb2->setFetchMode(MDB2_FETCHMODE_ASSOC);
+?>
