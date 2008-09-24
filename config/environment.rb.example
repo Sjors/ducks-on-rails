@@ -16,8 +16,8 @@ SQL_IMPORT = "mysql --defaults-extra-file=config/duck.cnf < db/import/"
 
 DUCKS_RINGED_FILE = "ducks-ringed-example-species.rpt" 
 DUCKS_RECAPTURED_FILE = "ducks-recaptured-example-species.rpt"
-#DUCKS_RINGED_FILE = "eenden-geringd.rpt"
-#DUCKS_RECAPTURED_FILE = "eenden-terug.rpt"
+#DUCKS_RINGED_FILE = "ducks-ringed.rpt" 
+#DUCKS_RECAPTURED_FILE = "ducks-recaptured.rpt"
 
 PROCESS_DUCK_DECOYS = false
 PROCESS_GEONAMES = true
