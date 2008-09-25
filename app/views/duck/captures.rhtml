@@ -11,8 +11,6 @@
         <th>Date</th>
         <th>Location</th>
         <th>Coordinates</th>
-        <!--<th>Place descriptions</th>
-        <th>Ringer</th>-->
     </tr>
     <% for capture in @captures %>
         <tr>
@@ -21,19 +19,6 @@
             <td><%if capture.Coordinates %>
             <a href="http://maps.google.com/maps?f=q&hl=en&geocode=&q=<%=capture.Coordinates[0].to_s%>+<%=capture.Coordinates[1].to_s%>"><%=capture.CoordinatesAsText%></a>
             <%end%></td>
-            <!--
-            <td>
-            <%#if capture.CoordinateInfo then capture.CoordinateInfo.each {|place| %>
-            <%#=place.name%><br>
-            <%# } end %>
-            </td>
-            <td>
-            <%#if capture.Ringer then %> 
-              <%#=capture.Ringer.VOORZETSEL.titleize + " " + capture.Ringer.ACHTERNAAM.titleize %>
-            <%#end%>
-            </td>
-            -->
-
         </tr>
     <% end %>
     </table>

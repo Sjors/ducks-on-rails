@@ -12,9 +12,9 @@ class DuckController < ApplicationController
     @ducks = Duck.find(
         :all,
         :ducks,
-        :conditions => ["#{:ducks}.#{:sch} = ? AND #{:ducks}.#{:species_id} = ? AND captures > ?",'NLA', @species.id, 1],
+        :conditions => ["#{:ducks}.#{:sch} = ? AND #{:ducks}.#{:species_id} = ? AND capture_counts.captures > ?",'NLA', @species.id, 1],
         :include => :capture_count,
-        :order => "captures DESC",
+        :order => "capture_counts.captures DESC",
         :limit => 20
     )
     render :action => 'list'
@@ -29,7 +29,7 @@ class DuckController < ApplicationController
     ducksallowed = Duck.find(
         :all, 
         :ducks,
-        :conditions => ["#{:ducks}.#{:sch} = ? AND #{:ducks}.#{:species_id} = ? AND captures > ?",'NLA', @species.id, 1],
+        :conditions => ["#{:ducks}.#{:sch} = ? AND #{:ducks}.#{:species_id} = ? AND capture_counts.captures > ?",'NLA', @species.id, 1],
         :include => :capture_count,
         :order => "captures DESC",
         :limit => 20
