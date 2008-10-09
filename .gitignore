@@ -1,0 +1,12 @@
+config/database.php
+config/database.yml
+config/duck.cnf
+log/development.log
+log/production.log
+tmp/restart.txt
+.gmtcommands4
+bla_tmpxx.eps
+config/settings.rb
+log/test.log
+secret
+

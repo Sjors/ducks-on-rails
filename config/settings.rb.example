@@ -1,0 +1,11 @@
+# Run SQL scripts during migrations:
+SQL_MIGRATE = "mysql --defaults-extra-file=config/duck.cnf < db/migrate/sql/" 
+SQL_IMPORT = "mysql --defaults-extra-file=config/duck.cnf < db/import/" 
+
+DUCKS_RINGED_FILE = "ducks-ringed.rpt" 
+DUCKS_RECAPTURED_FILE = "ducks-recaptured.rpt"
+#DUCKS_RINGED_FILE = "eenden-geringd.rpt"
+#DUCKS_RECAPTURED_FILE = "eenden-terug.rpt"
+
+PROCESS_DUCK_DECOYS = true
+PROCESS_GEONAMES = false

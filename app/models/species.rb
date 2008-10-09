@@ -709,7 +709,7 @@ class Species < ActiveRecord::Base
         )"
     end
 
-    return sql.execute (sql_common_begin + sql_condition + sql_common_end).fetch_row.first.to_f
+    return sql.execute(sql_common_begin + sql_condition + sql_common_end).fetch_row.first.to_f
   
   end
 end
